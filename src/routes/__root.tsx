@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "CST First Shift Rutine" },
+      { name: "description", content: "A cloud-powered web app for real-time class monitoring and smart schedule visualization for the CST Department." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "CST First Shift Rutine" },
+      { property: "og:description", content: "A cloud-powered web app for real-time class monitoring and smart schedule visualization for the CST Department." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "CST First Shift Rutine" },
+      { name: "twitter:description", content: "A cloud-powered web app for real-time class monitoring and smart schedule visualization for the CST Department." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/897e7ee3-2a02-400f-938f-afd0864a7b45/id-preview-c5f2bfc3--0fc16985-0736-42c4-98d9-8eaaa1dbf8d5.lovable.app-1778604823485.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/897e7ee3-2a02-400f-938f-afd0864a7b45/id-preview-c5f2bfc3--0fc16985-0736-42c4-98d9-8eaaa1dbf8d5.lovable.app-1778604823485.png" },
     ],
     links: [
       {
