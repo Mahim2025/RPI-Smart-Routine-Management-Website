@@ -23,7 +23,7 @@ export function Header() {
               Rajshahi Polytechnic Institute
             </div>
             <div className="text-sm sm:text-base font-bold text-gradient-cyber">
-              CST · Smart Routine <span className="text-muted-foreground font-normal">/ 1st Shift</span>
+              CST · Smart Routine <span className="text-muted-foreground font-normal">/ 1st & 2nd Shift</span>
             </div>
           </div>
         </Link>

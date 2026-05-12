@@ -29,7 +29,7 @@ export function HeroBanner() {
           </h1>
           <p className="mt-3 max-w-xl text-sm sm:text-base text-muted-foreground">
             Real-time class tracking, smart schedule visualization & teacher
-            directory for the <span className="text-primary">Department of CST · 1st Shift</span>,
+            directory for the <span className="text-primary">Department of CST · 1st & 2nd Shift</span>,
             Rajshahi Polytechnic Institute.
           </p>
         </div>
