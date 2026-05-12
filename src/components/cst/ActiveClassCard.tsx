@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {
-  PERIODS,
+  PERIODS_BY_SHIFT,
   computeStatus,
   subjectByCode,
   teacherByCode,
@@ -31,9 +31,10 @@ export function ActiveClassCard({ sem }: { sem: SemesterData }) {
 
   if (cur) {
     const subj = subjectByCode(sem, cur.subjectCode);
-    const teacher = teacherByCode(cur.teacherCode);
-    const startP = PERIODS[cur.startPeriod - 1];
-    const endP = PERIODS[cur.startPeriod + cur.span - 2];
+    const teacher = teacherByCode(sem.shift, cur.teacherCode);
+    const periods = PERIODS_BY_SHIFT[sem.shift];
+    const startP = periods[cur.startPeriod - 1];
+    const endP = periods[cur.startPeriod + cur.span - 2];
     const progress = 1 - status.remainingMs / status.totalMs;
 
     return (
@@ -71,8 +72,8 @@ export function ActiveClassCard({ sem }: { sem: SemesterData }) {
 
   if (nx) {
     const subj = subjectByCode(sem, nx.subjectCode);
-    const teacher = teacherByCode(nx.teacherCode);
-    const startP = PERIODS[nx.startPeriod - 1];
+    const teacher = teacherByCode(sem.shift, nx.teacherCode);
+    const startP = PERIODS_BY_SHIFT[sem.shift][nx.startPeriod - 1];
     return (
       <div className="glass rounded-2xl p-6 border border-primary/30 glow-blue">
         <div className="text-xs uppercase tracking-[0.2em] text-highlight font-semibold flex items-center gap-2">

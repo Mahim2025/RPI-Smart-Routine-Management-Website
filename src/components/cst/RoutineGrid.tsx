@@ -1,6 +1,6 @@
 import {
   DAYS,
-  PERIODS,
+  PERIODS_BY_SHIFT,
   subjectByCode,
   type SemesterData,
   type ClassEntry,
@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react";
 
 export function RoutineGrid({ sem }: { sem: SemesterData }) {
+  const periods = PERIODS_BY_SHIFT[sem.shift];
   const [now, setNow] = useState<Date | null>(null);
   useEffect(() => {
     setNow(new Date());
@@ -37,7 +38,7 @@ export function RoutineGrid({ sem }: { sem: SemesterData }) {
             <th className="text-[10px] uppercase tracking-wider text-muted-foreground p-2 text-left">
               Day
             </th>
-            {PERIODS.map((p) => (
+            {periods.map((p) => (
               <th
                 key={p.index}
                 className="text-[10px] uppercase tracking-wider text-muted-foreground p-2 text-center font-medium"

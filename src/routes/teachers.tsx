@@ -1,34 +1,40 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { PageShell } from "@/components/cst/PageShell";
-import { TEACHERS, SEMESTERS } from "@/data/routine";
+import { ShiftSwitcher } from "@/components/cst/ShiftSwitcher";
+import { TEACHERS_BY_SHIFT, SEMESTERS_BY_SHIFT, SHIFT_LABEL, type Shift } from "@/data/routine";
 import { Search, User } from "lucide-react";
 
 export const Route = createFileRoute("/teachers")({
   head: () => ({
     meta: [
-      { title: "Teacher Directory · CST 1st Shift" },
-      { name: "description", content: "Directory of teachers in the CST Department, 1st Shift, Rajshahi Polytechnic Institute." },
-      { property: "og:title", content: "Teacher Directory · CST 1st Shift" },
-      { property: "og:description", content: "Browse teachers and their assigned subjects." },
+      { title: "Teacher Directory · CST" },
+      { name: "description", content: "Directory of teachers in the CST Department, Rajshahi Polytechnic Institute (both shifts)." },
+      { property: "og:title", content: "Teacher Directory · CST" },
+      { property: "og:description", content: "Browse teachers and their assigned subjects across 1st and 2nd shift." },
     ],
   }),
   component: TeachersPage,
 });
 
 function TeachersPage() {
+  const [shift, setShift] = useState<Shift>("1st");
   const [q, setQ] = useState("");
+  const teachers = TEACHERS_BY_SHIFT[shift];
+  const semesters = SEMESTERS_BY_SHIFT[shift];
+
   const enriched = useMemo(() => {
-    return TEACHERS.map((t) => {
+    return teachers.map((t) => {
       const subs: { code: string; name: string; semester: string }[] = [];
-      for (const sem of SEMESTERS) {
+      for (const sem of semesters) {
         for (const s of sem.subjects) {
           if (s.teacherCode === t.code) subs.push({ code: s.code, name: s.name, semester: sem.id });
         }
       }
       return { ...t, subjects: subs };
     });
-  }, []);
+  }, [teachers, semesters]);
+
   const filtered = enriched.filter(
     (t) =>
       !q ||
@@ -38,21 +44,27 @@ function TeachersPage() {
         (s) => s.name.toLowerCase().includes(q.toLowerCase()) || s.code.toLowerCase().includes(q.toLowerCase()),
       ),
   );
+
   return (
     <PageShell>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-gradient-cyber">Teacher Directory</h1>
-          <p className="text-xs text-muted-foreground mt-1">{TEACHERS.length} faculty · CST · 1st Shift</p>
+          <p className="text-xs text-muted-foreground mt-1">
+            {teachers.length} faculty · CST · {SHIFT_LABEL[shift]}
+          </p>
         </div>
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-          <input
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder="Search by name, code or subject"
-            className="pl-9 pr-3 py-2 rounded-lg glass border border-border focus:border-primary outline-none text-sm w-72 max-w-full"
-          />
+        <div className="flex flex-wrap items-center gap-2">
+          <ShiftSwitcher value={shift} onChange={setShift} />
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+            <input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Search by name, code or subject"
+              className="pl-9 pr-3 py-2 rounded-lg glass border border-border focus:border-primary outline-none text-sm w-72 max-w-full"
+            />
+          </div>
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
