@@ -1,4 +1,4 @@
-import { Github, Mail, Heart } from "lucide-react";
+import { Facebook, MessageCircle, Mail, Heart } from "lucide-react";
 
 export function Footer() {
   return (
@@ -19,11 +19,33 @@ export function Footer() {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <a href="#" aria-label="GitHub" className="size-10 grid place-items-center rounded-lg glass border border-border hover:border-primary hover:glow-cyan transition">
-                <Github className="size-4 text-primary" />
+              <a
+                href="https://www.facebook.com/emptymahim06"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                title="Facebook · emptymahim06"
+                className="size-10 grid place-items-center rounded-lg glass border border-border hover:border-primary hover:glow-cyan transition"
+              >
+                <Facebook className="size-4 text-primary" />
               </a>
-              <a href="#" aria-label="Contact" className="size-10 grid place-items-center rounded-lg glass border border-border hover:border-accent hover:glow-green transition">
-                <Mail className="size-4 text-accent" />
+              <a
+                href="https://wa.me/8801860280614"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                title="WhatsApp · 01860280614"
+                className="size-10 grid place-items-center rounded-lg glass border border-border hover:border-accent hover:glow-green transition"
+              >
+                <MessageCircle className="size-4 text-accent" />
+              </a>
+              <a
+                href="mailto:mdmahimhosen2006@gmail.com"
+                aria-label="Email"
+                title="mdmahimhosen2006@gmail.com"
+                className="size-10 grid place-items-center rounded-lg glass border border-border hover:border-primary hover:glow-cyan transition"
+              >
+                <Mail className="size-4 text-primary" />
               </a>
               <div className="px-3 py-1.5 rounded-lg bg-card/60 border border-border font-mono text-[10px] text-muted-foreground">
                 v1.0.0
