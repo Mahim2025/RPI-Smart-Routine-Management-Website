@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {
-  PERIODS,
+  PERIODS_BY_SHIFT,
   computeStatus,
   subjectByCode,
   toMin,
@@ -55,8 +55,9 @@ function Row({
   minutesNow: number;
   isCurrent: boolean;
 }) {
-  const startP = PERIODS[cls.startPeriod - 1];
-  const endP = PERIODS[cls.startPeriod + cls.span - 2];
+  const periods = PERIODS_BY_SHIFT[sem.shift];
+  const startP = periods[cls.startPeriod - 1];
+  const endP = periods[cls.startPeriod + cls.span - 2];
   const ended = toMin(endP.end) <= minutesNow;
   const subj = subjectByCode(sem, cls.subjectCode);
 

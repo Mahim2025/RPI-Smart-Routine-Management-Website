@@ -1,15 +1,18 @@
-import { SEMESTERS } from "@/data/routine";
+import { SEMESTERS_BY_SHIFT, type Shift } from "@/data/routine";
 
 export function SemesterSwitcher({
   value,
   onChange,
+  shift,
 }: {
   value: string;
   onChange: (v: string) => void;
+  shift: Shift;
 }) {
+  const list = SEMESTERS_BY_SHIFT[shift];
   return (
     <div className="inline-flex glass rounded-xl p-1 gap-1">
-      {SEMESTERS.map((s) => {
+      {list.map((s) => {
         const active = s.id === value;
         return (
           <button
