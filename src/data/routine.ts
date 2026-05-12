@@ -50,6 +50,7 @@ export const TEACHERS: Teacher[] = [
   { code: "EH", name: "Md. Ehsanul Haque" },
   { code: "AR", name: "Abdur Razzak" },
   { code: "JR", name: "JR (Physical Ed.)" },
+  { code: "RS", name: "Rabeya Siddiqa" },
 ];
 
 export interface Subject {
@@ -217,7 +218,7 @@ export const SEMESTERS: SemesterData[] = [
     label: "7th Semester",
     load: 33,
     subjects: [
-      { code: "25853", name: "Innovation & Entrepreneurship", teacherCode: "JA" },
+      { code: "25853", name: "Innovation & Entrepreneurship", teacherCode: "RS" },
       { code: "28571", name: "Digital Marketing Technique", teacherCode: "MFH" },
       { code: "28572", name: "Network Administration & Services", teacherCode: "FH" },
       { code: "28573", name: "Cyber Security & Ethics", teacherCode: "FH" },
@@ -232,7 +233,7 @@ export const SEMESTERS: SemesterData[] = [
       c("SUN", 4, 1, "28575", "RK", "1308"),
       c("SUN", 5, 3, "28576", "SU", "1308"),
       // MON
-      c("MON", 2, 1, "25853", "JA", "2303"),
+      c("MON", 2, 1, "25853", "RS", "2303"),
       c("MON", 3, 1, "28575", "RK", "2303"),
       c("MON", 4, 1, "28572", "FH", "2303"),
       c("MON", 5, 3, "28571", "MFH", "1305"),
@@ -245,7 +246,7 @@ export const SEMESTERS: SemesterData[] = [
       c("WED", 4, 1, "28571", "MFH", "1302"),
       c("WED", 5, 3, "28574", "AAM", "1302"),
       // THU
-      c("THU", 1, 1, "25853", "JA", "2303"),
+      c("THU", 1, 1, "25853", "RS", "2303"),
       c("THU", 2, 1, "28574", "AAM", "2303"),
       c("THU", 3, 1, "28573", "FH", "2303"),
       c("THU", 4, 1, "28571", "MFH", "2303"),
