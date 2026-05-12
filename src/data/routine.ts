@@ -50,6 +50,7 @@ export const TEACHERS: Teacher[] = [
   { code: "EH", name: "Md. Ehsanul Haque" },
   { code: "AR", name: "Abdur Razzak" },
   { code: "JR", name: "JR (Physical Ed.)" },
+  { code: "RS", name: "Rabeya Siddiqa" },
 ];
 
 export interface Subject {
