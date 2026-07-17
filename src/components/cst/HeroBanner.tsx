@@ -23,14 +23,14 @@ export function HeroBanner() {
             Academic Session 2025–26 · Live
           </div>
           <h1 className="mt-4 text-3xl sm:text-5xl font-extrabold leading-tight">
-            <span className="text-gradient-cyber">CST Smart Routine</span>
+            <span className="text-gradient-cyber">RPI SMART ROUTINE</span>
             <br />
-            <span className="text-foreground">Management System</span>
+            <span className="text-foreground">Institute-wide Class Portal</span>
           </h1>
           <p className="mt-3 max-w-xl text-sm sm:text-base text-muted-foreground">
             Real-time class tracking, smart schedule visualization & teacher
-            directory for the <span className="text-primary">Department of CST · 1st & 2nd Shift</span>,
-            Rajshahi Polytechnic Institute.
+            directory for every department of{" "}
+            <span className="text-primary">Rajshahi Polytechnic Institute · 1st & 2nd Shift</span>.
           </p>
         </div>
         <div className="flex flex-col items-end gap-2 shrink-0">

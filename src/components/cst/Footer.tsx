@@ -15,7 +15,7 @@ export function Footer() {
               </div>
               <div className="text-2xl font-bold text-gradient-neon mt-1">Md. Mahim Hosen</div>
               <div className="text-xs text-muted-foreground mt-1 flex items-center justify-center sm:justify-start gap-1.5">
-                Made with <Heart className="size-3 text-accent fill-accent" /> for CST · 1st Shift
+                Made with <Heart className="size-3 text-accent fill-accent" /> for Rajshahi Polytechnic Institute
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -54,7 +54,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-4 text-center text-[11px] text-muted-foreground">
-          © {new Date().getFullYear()} Rajshahi Polytechnic Institute · Department of Computer Science & Technology
+          © {new Date().getFullYear()} RPI SMART ROUTINE · Rajshahi Polytechnic Institute
         </div>
       </div>
     </footer>
