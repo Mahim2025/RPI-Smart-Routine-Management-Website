@@ -16,6 +16,63 @@ export const SHIFT_LABEL: Record<Shift, string> = {
   "2nd": "2nd Shift",
 };
 
+/* =========================================================
+ * Departments (institute-wide)
+ * ========================================================= */
+export type DepartmentId =
+  | "CIVIL"
+  | "CT"
+  | "ELECTRICAL"
+  | "ELECTRONICS"
+  | "MECHANICAL"
+  | "EMT"
+  | "MECHATRONICS"
+  | "POWER";
+
+export interface Department {
+  id: DepartmentId;
+  name: string;
+  short: string;
+}
+
+export const DEPARTMENTS: Department[] = [
+  { id: "CIVIL", name: "Civil Technology", short: "Civil" },
+  { id: "CT", name: "Computer Technology", short: "CT" },
+  { id: "ELECTRICAL", name: "Electrical Technology", short: "Electrical" },
+  { id: "ELECTRONICS", name: "Electronics Technology", short: "Electronics" },
+  { id: "MECHANICAL", name: "Mechanical Technology", short: "Mechanical" },
+  { id: "EMT", name: "Electro-Medical Technology", short: "EMT" },
+  { id: "MECHATRONICS", name: "Mechatronics Technology", short: "Mechatronics" },
+  { id: "POWER", name: "Power Technology", short: "Power" },
+];
+
+export const DEPARTMENT_LABEL: Record<DepartmentId, string> = Object.fromEntries(
+  DEPARTMENTS.map((d) => [d.id, d.name]),
+) as Record<DepartmentId, string>;
+
+/** All semester IDs offered institute-wide. */
+export const ALL_SEMESTER_IDS = [
+  "1st",
+  "2nd",
+  "3rd",
+  "4th",
+  "5th",
+  "6th",
+  "7th",
+  "8th",
+] as const;
+export type AnySemesterId = (typeof ALL_SEMESTER_IDS)[number];
+export const SEMESTER_LABEL: Record<AnySemesterId, string> = {
+  "1st": "1st Semester",
+  "2nd": "2nd Semester",
+  "3rd": "3rd Semester",
+  "4th": "4th Semester",
+  "5th": "5th Semester",
+  "6th": "6th Semester",
+  "7th": "7th Semester",
+  "8th": "8th Semester",
+};
+
 export interface Period {
   index: number;
   start: string;
@@ -429,6 +486,33 @@ export const SEMESTERS: SemesterData[] = [...FIRST_SHIFT, ...SECOND_SHIFT];
 export function getSemester(shift: Shift, id: string): SemesterData {
   const list = SEMESTERS_BY_SHIFT[shift];
   return list.find((s) => s.id === id) ?? list[0];
+}
+
+/**
+ * Department-aware lookup. Only Computer Technology (CT) currently has
+ * routine data available; every other department returns null so the UI
+ * can render a "Coming soon" placeholder.
+ */
+export function getSemesterFor(
+  dept: DepartmentId,
+  shift: Shift,
+  id: string,
+): SemesterData | null {
+  if (dept !== "CT") return null;
+  const list = SEMESTERS_BY_SHIFT[shift];
+  return list.find((s) => s.id === id) ?? null;
+}
+
+/** Which semester IDs are available for a given department + shift. */
+export function availableSemestersFor(dept: DepartmentId, shift: Shift): string[] {
+  if (dept !== "CT") return [];
+  return SEMESTERS_BY_SHIFT[shift].map((s) => s.id);
+}
+
+/** True on Friday / Saturday — institute weekend. */
+export function isWeekend(date = new Date()): boolean {
+  const d = date.getDay();
+  return d === 5 || d === 6;
 }
 
 export function teacherByCode(shift: Shift, code: string): Teacher | undefined {
